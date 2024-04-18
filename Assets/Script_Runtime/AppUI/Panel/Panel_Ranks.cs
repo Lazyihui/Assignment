@@ -21,7 +21,7 @@ public class Panel_Ranks : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void AddElement(int typeID) {
+    public void AddElement(int typeID, float cd, float maxCd) {
 
         Panel_RanksElement ele = GameObject.Instantiate(ranksElements, selectGroup);
 
@@ -29,8 +29,11 @@ public class Panel_Ranks : MonoBehaviour {
         ele.OnRanksClickHandle = () => {
             OnRanksClickHandle.Invoke();
         };
-        ele.Init(typeID);
+        ele.Init(typeID, cd, maxCd);
+        ele.ranksBg.fillAmount = cd / maxCd;
+
     }
+
 
 
 }
