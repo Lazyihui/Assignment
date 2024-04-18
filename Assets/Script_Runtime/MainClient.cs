@@ -8,6 +8,8 @@ public class MainClient : MonoBehaviour {
 
     public Context ctx;
 
+    bool isGame = false;
+    float time;
 
     void Start() {
         Application.targetFrameRate = 120;
@@ -39,9 +41,12 @@ public class MainClient : MonoBehaviour {
             appUI.Panel_Login_Close(ctx.uiContext);
             appUI.Panel_Ranks_Open(ctx.uiContext);
 
-            appUI.Panel_Ranks_AddElement(ctx.uiContext, 1, 0.4f, 0.5f);
-            appUI.Panel_Ranks_AddElement(ctx.uiContext, 2, 0.5f, 0.5f);
-            appUI.Panel_Ranks_AddElement(ctx.uiContext, 3, 0.5f, 0.5f);
+
+
+            appUI.Panel_Ranks_AddElement(ctx.uiContext, 1);
+            appUI.Panel_Ranks_AddElement(ctx.uiContext, 2);
+            appUI.Panel_Ranks_AddElement(ctx.uiContext, 3);
+            isGame = true;
         };
 
         appUI.OnRanksClickHandle = () => {
@@ -53,10 +58,13 @@ public class MainClient : MonoBehaviour {
 
 
     void Update() {
+        float dt = Time.deltaTime;
+
+        if (isGame) {
+            AppUI appUI = ctx.uiContext.appUI;
+        }
 
     }
-
-    
 
 
 }

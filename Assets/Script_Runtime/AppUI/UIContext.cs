@@ -12,6 +12,8 @@ public class UIcontext {
 
     public AppUI appUI;
 
+    public int[] ranksTypeID;
+
 
     public UIcontext() {
         appUI = new AppUI();

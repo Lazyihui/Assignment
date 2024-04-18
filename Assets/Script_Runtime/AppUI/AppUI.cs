@@ -65,11 +65,17 @@ public class AppUI {
         }
     }
 
-    public void Panel_Ranks_AddElement(UIcontext ctx, int typeID,float cd,float maxCd) {
+    public void Panel_Ranks_AddElement(UIcontext ctx, int typeID) {
         Panel_Ranks panel_Ranks = ctx.panel_Ranks;
         if (panel_Ranks != null) {
-            panel_Ranks.AddElement(typeID,cd,maxCd);
+            panel_Ranks.AddElement(typeID);
         }
     }
+
+    public void Panel_Ranks_CDTick(int typeID, float cd, float maxCd) {
+        
+
+    }
+
 
 }

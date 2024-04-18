@@ -9,10 +9,6 @@ public class Panel_RanksElement : MonoBehaviour {
 
     [SerializeField] public Image ranksBg;
 
-    public float cd;
-
-    public float maxCd;
-
     public Action OnRanksClickHandle;
 
     int typeID;
@@ -26,10 +22,8 @@ public class Panel_RanksElement : MonoBehaviour {
         });
     }
 
-    public void Init(int typeID, float cd, float maxCd) {
+    public void Init(int typeID) {
         this.typeID = typeID;
-        this.cd = cd;
-        this.maxCd = maxCd;
     }
 
 

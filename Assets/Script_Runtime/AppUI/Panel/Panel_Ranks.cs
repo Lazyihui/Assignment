@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Panel_Ranks : MonoBehaviour {
-    [SerializeField] Panel_RanksElement ranksElements;
+    [SerializeField] public Panel_RanksElement ranksElements;
 
     [SerializeField] Transform selectGroup;
 
@@ -21,7 +21,7 @@ public class Panel_Ranks : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void AddElement(int typeID, float cd, float maxCd) {
+    public void AddElement(int typeID) {
 
         Panel_RanksElement ele = GameObject.Instantiate(ranksElements, selectGroup);
 
@@ -29,11 +29,8 @@ public class Panel_Ranks : MonoBehaviour {
         ele.OnRanksClickHandle = () => {
             OnRanksClickHandle.Invoke();
         };
-        ele.Init(typeID, cd, maxCd);
-        ele.ranksBg.fillAmount = cd / maxCd;
-
+        ele.Init(typeID);
     }
-
 
 
 }
