@@ -4,6 +4,8 @@ public class UIcontext {
 
     public Panel_Login panel_Login;
 
+    public Panel_Ranks panel_Ranks;
+
     public Canvas canvas;
 
     public ModuleAssets assetsContext;

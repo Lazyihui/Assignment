@@ -33,10 +33,24 @@ public class MainClient : MonoBehaviour {
 
         appUI.Panel_Login_Open(ctx.uiContext);
 
+
         appUI.OnStartClickHandle = () => {
             Debug.Log("开始游戏  1 ddfs");
+            appUI.Panel_Login_Close(ctx.uiContext);
+            appUI.Panel_Ranks_Open(ctx.uiContext);
+
+            appUI.Panel_Ranks_AddElement(ctx.uiContext, 1);
+            appUI.Panel_Ranks_AddElement(ctx.uiContext, 2);
+            appUI.Panel_Ranks_AddElement(ctx.uiContext, 3);
+        };
+
+        appUI.OnRanksClickHandle = () => {
+            Debug.Log("小兵");
         };
     }
+
+
+
 
     void Update() {
 
