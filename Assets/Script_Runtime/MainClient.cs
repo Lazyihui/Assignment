@@ -11,8 +11,13 @@ public class MainClient : MonoBehaviour {
     bool isGame = false;
     float time;
 
+    float cd;
+    float maxCd;
+
     void Start() {
         Application.targetFrameRate = 120;
+        cd = 0.5f;
+        maxCd = 0.5f;
 
         // === Instantiation ====
         ctx = new Context();
@@ -43,9 +48,7 @@ public class MainClient : MonoBehaviour {
 
 
 
-            appUI.Panel_Ranks_AddElement(ctx.uiContext, 1);
-            appUI.Panel_Ranks_AddElement(ctx.uiContext, 2);
-            appUI.Panel_Ranks_AddElement(ctx.uiContext, 3);
+            appUI.Panel_Ranks_AddElement(ctx.uiContext, 1, cd, maxCd);
             isGame = true;
         };
 
@@ -62,6 +65,13 @@ public class MainClient : MonoBehaviour {
 
         if (isGame) {
             AppUI appUI = ctx.uiContext.appUI;
+            if (Input.GetMouseButtonDown(0)) {
+                Debug.Log("1 " + cd);
+
+                cd -= 0.1f;
+                Debug.Log("2 " + cd);
+                appUI.Panel_Ranks_CDTick(1, cd, maxCd);
+            }
         }
 
     }

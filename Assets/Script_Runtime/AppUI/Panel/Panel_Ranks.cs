@@ -21,16 +21,18 @@ public class Panel_Ranks : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    public void AddElement(int typeID) {
+    public void AddElement(int typeID,float cd,float maxCd) {
 
         Panel_RanksElement ele = GameObject.Instantiate(ranksElements, selectGroup);
 
         ele.Ctor();
+        ele.SetCd(cd,maxCd);
         ele.OnRanksClickHandle = () => {
             OnRanksClickHandle.Invoke();
         };
         ele.Init(typeID);
     }
 
+  
 
 }

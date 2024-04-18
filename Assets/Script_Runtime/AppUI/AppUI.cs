@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AppUI {
@@ -6,6 +7,12 @@ public class AppUI {
     public Action OnStartClickHandle;
 
     public Action OnRanksClickHandle;
+
+    Dictionary<int, Panel_RanksElement> ranksEle;
+
+    public AppUI() {
+        ranksEle = new Dictionary<int, Panel_RanksElement>();
+    }
 
     //登入页面
     public void Panel_Login_Open(UIcontext ctx) {
@@ -65,16 +72,23 @@ public class AppUI {
         }
     }
 
-    public void Panel_Ranks_AddElement(UIcontext ctx, int typeID) {
+    public void Panel_Ranks_AddElement(UIcontext ctx, int typeID, float cd, float maxCd) {
         Panel_Ranks panel_Ranks = ctx.panel_Ranks;
         if (panel_Ranks != null) {
-            panel_Ranks.AddElement(typeID);
+            panel_Ranks.AddElement(typeID, cd, maxCd);
         }
     }
 
     public void Panel_Ranks_CDTick(int typeID, float cd, float maxCd) {
-        
 
+        bool has = ranksEle.TryGetValue(typeID, out Panel_RanksElement ranksElements);
+        if (!has) {
+            Debug.Log("没有ele");
+            return;
+        }
+        Debug.Log("aa");
+
+        ranksElements.SetCd(cd, maxCd);
     }
 
 

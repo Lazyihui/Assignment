@@ -15,7 +15,15 @@ public class Panel_RanksElement : MonoBehaviour {
 
     public void Init() { }
 
+    public void SetCd(float cd, float maxCd) {
 
+        if (maxCd == 0) {
+            ranksBg.fillAmount = 0;
+            return;
+        }
+        Debug.Log("cd"+cd);
+        ranksBg.fillAmount = cd / maxCd;
+    }
     public void Ctor() {
         ranksButton.onClick.AddListener(() => {
             OnRanksClickHandle.Invoke();
