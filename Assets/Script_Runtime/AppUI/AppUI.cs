@@ -76,6 +76,7 @@ public class AppUI {
         Panel_Ranks panel_Ranks = ctx.panel_Ranks;
         if (panel_Ranks != null) {
             panel_Ranks.AddElement(typeID, cd, maxCd);
+            ranksEle.Add(typeID, panel_Ranks.ranksElements);
         }
     }
 
@@ -86,7 +87,6 @@ public class AppUI {
             Debug.Log("没有ele");
             return;
         }
-        Debug.Log("aa");
 
         ranksElements.SetCd(cd, maxCd);
     }

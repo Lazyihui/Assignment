@@ -21,7 +21,7 @@ public class Panel_RanksElement : MonoBehaviour {
             ranksBg.fillAmount = 0;
             return;
         }
-        Debug.Log("cd"+cd);
+        Debug.Log("cd"+cd+"/maxCd"+maxCd);
         ranksBg.fillAmount = cd / maxCd;
     }
     public void Ctor() {

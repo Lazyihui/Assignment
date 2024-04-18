@@ -66,10 +66,7 @@ public class MainClient : MonoBehaviour {
         if (isGame) {
             AppUI appUI = ctx.uiContext.appUI;
             if (Input.GetMouseButtonDown(0)) {
-                Debug.Log("1 " + cd);
-
                 cd -= 0.1f;
-                Debug.Log("2 " + cd);
                 appUI.Panel_Ranks_CDTick(1, cd, maxCd);
             }
         }
