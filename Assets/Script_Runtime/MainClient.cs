@@ -9,7 +9,6 @@ public class MainClient : MonoBehaviour {
     public Context ctx;
 
     bool isGame = false;
-    float time;
 
     float cd;
     float maxCd;
@@ -36,23 +35,22 @@ public class MainClient : MonoBehaviour {
         // ==== Init ====
 
         // ==== Enter ====
-        AppUI appUI = ctx.uiContext.appUI;
 
-        appUI.Panel_Login_Open(ctx.uiContext);
+        ctx.uiApp.Panel_Login_Open();
 
 
-        appUI.OnStartClickHandle = () => {
+        ctx.uiApp.OnStartClickHandle = () => {
             Debug.Log("开始游戏  1 ddfs");
-            appUI.Panel_Login_Close(ctx.uiContext);
-            appUI.Panel_Ranks_Open(ctx.uiContext);
+            ctx.uiApp.Panel_Login_Close();
+            ctx.uiApp.Panel_Ranks_Open();
 
 
 
-            appUI.Panel_Ranks_AddElement(ctx.uiContext, 1, cd, maxCd);
+            ctx.uiApp.Panel_Ranks_AddElement( 1, cd, maxCd);
             isGame = true;
         };
 
-        appUI.OnRanksClickHandle = () => {
+        ctx.uiApp.OnRanksClickHandle = () => {
             Debug.Log("小兵");
         };
     }
@@ -64,10 +62,9 @@ public class MainClient : MonoBehaviour {
         float dt = Time.deltaTime;
 
         if (isGame) {
-            AppUI appUI = ctx.uiContext.appUI;
             if (Input.GetMouseButtonDown(0)) {
                 cd -= 0.1f;
-                appUI.Panel_Ranks_CDTick(1, cd, maxCd);
+                ctx.uiApp.Panel_Ranks_CDTick( 1, cd, maxCd);
             }
         }
 

@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class AppUI {
 
+    UIcontext ctx;
+
     public Action OnStartClickHandle;
 
     public Action OnRanksClickHandle;
 
-    Dictionary<int, Panel_RanksElement> ranksEle;
 
     public AppUI() {
-        ranksEle = new Dictionary<int, Panel_RanksElement>();
+        ctx = new UIcontext();
+    }
+
+    public void Inject(Canvas canvas, ModuleAssets assetsContext){
+        ctx.Inject(canvas,assetsContext);
+
     }
 
     //登入页面
-    public void Panel_Login_Open(UIcontext ctx) {
+    public void Panel_Login_Open() {
         Panel_Login panel_Login = ctx.panel_Login;
         if (panel_Login == null) {
 
@@ -36,14 +42,14 @@ public class AppUI {
         panel_Login.Show();
     }
 
-    public void Panel_Login_Close(UIcontext ctx) {
+    public void Panel_Login_Close() {
         Panel_Login panel_Login = ctx.panel_Login;
         if (panel_Login != null) {
             panel_Login.Close();
         }
     }
 
-    public void Panel_Ranks_Open(UIcontext ctx) {
+    public void Panel_Ranks_Open() {
         Panel_Ranks panel_Ranks = ctx.panel_Ranks;
 
         if (panel_Ranks == null) {
@@ -65,30 +71,25 @@ public class AppUI {
 
     }
 
-    public void Panel_Ranks_Close(UIcontext ctx) {
+    public void Panel_Ranks_Close() {
         Panel_Ranks panel_Ranks = ctx.panel_Ranks;
         if (panel_Ranks != null) {
             panel_Ranks.Close();
         }
     }
 
-    public void Panel_Ranks_AddElement(UIcontext ctx, int typeID, float cd, float maxCd) {
+    public void Panel_Ranks_AddElement(int typeID, float cd, float maxCd) {
         Panel_Ranks panel_Ranks = ctx.panel_Ranks;
         if (panel_Ranks != null) {
             panel_Ranks.AddElement(typeID, cd, maxCd);
-            ranksEle.Add(typeID, panel_Ranks.ranksElements);
         }
     }
 
     public void Panel_Ranks_CDTick(int typeID, float cd, float maxCd) {
-
-        bool has = ranksEle.TryGetValue(typeID, out Panel_RanksElement ranksElements);
-        if (!has) {
-            Debug.Log("没有ele");
-            return;
+        Panel_Ranks panel_Ranks = ctx.panel_Ranks;
+        if (panel_Ranks != null) {
+            panel_Ranks.CDTick(typeID, cd, maxCd);
         }
-
-        ranksElements.SetCd(cd, maxCd);
     }
 
 

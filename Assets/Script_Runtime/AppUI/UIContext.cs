@@ -10,13 +10,10 @@ public class UIcontext {
 
     public ModuleAssets assetsContext;
 
-    public AppUI appUI;
-
     public int[] ranksTypeID;
 
 
     public UIcontext() {
-        appUI = new AppUI();
     }
 
     public void Inject(Canvas canvas, ModuleAssets assetsContext) {

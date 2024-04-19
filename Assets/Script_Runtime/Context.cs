@@ -5,15 +5,15 @@ public class Context {
 
     public ModuleAssets assetsContext;
 
-    public UIcontext uiContext;
+    public AppUI uiApp;
 
     public Context() {
         assetsContext = new ModuleAssets();
-        uiContext = new UIcontext();
+        uiApp = new AppUI();
     }
 
     public void Inject(Canvas canvas) {
-        uiContext.Inject(canvas, assetsContext);
+        uiApp.Inject(canvas, assetsContext);
     }
 
 }
