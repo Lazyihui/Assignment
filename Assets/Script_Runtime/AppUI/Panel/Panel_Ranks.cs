@@ -39,7 +39,6 @@ public class Panel_Ranks : MonoBehaviour {
         };
         ele.Init(typeID);
         ranksEle.Add(typeID,ele);
-
     }
 
     public void CDTick(int typeID,float cd,float maxCd) {

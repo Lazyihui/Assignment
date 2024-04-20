@@ -13,11 +13,12 @@ public class MainClient : MonoBehaviour {
     float cd;
     float maxCd;
 
+    float time;
+
     void Start() {
         Application.targetFrameRate = 120;
-        cd = 0.5f;
+        cd = 0.0f;
         maxCd = 0.5f;
-
         // === Instantiation ====
         ctx = new Context();
         Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -43,16 +44,16 @@ public class MainClient : MonoBehaviour {
             Debug.Log("开始游戏  1 ddfs");
             ctx.uiApp.Panel_Login_Close();
             ctx.uiApp.Panel_Ranks_Open();
-
-
-
-            ctx.uiApp.Panel_Ranks_AddElement( 1, cd, maxCd);
+            ctx.uiApp.Panel_Ranks_AddElement(1, cd, maxCd);
             isGame = true;
         };
 
         ctx.uiApp.OnRanksClickHandle = () => {
             Debug.Log("小兵");
+            cd = 0.5f;
+
         };
+
     }
 
 
@@ -60,12 +61,13 @@ public class MainClient : MonoBehaviour {
 
     void Update() {
         float dt = Time.deltaTime;
-
+        // 倒计时
         if (isGame) {
-            if (Input.GetMouseButtonDown(0)) {
-                cd -= 0.1f;
-                ctx.uiApp.Panel_Ranks_CDTick( 1, cd, maxCd);
+            if (cd > 0) {
+                cd -= dt;
+                ctx.uiApp.Panel_Ranks_CDTick(1, cd, maxCd);
             }
+
         }
 
     }

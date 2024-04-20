@@ -80,6 +80,7 @@ public class AppUI {
 
     public void Panel_Ranks_AddElement(int typeID, float cd, float maxCd) {
         Panel_Ranks panel_Ranks = ctx.panel_Ranks;
+        // !=不等于空
         if (panel_Ranks != null) {
             panel_Ranks.AddElement(typeID, cd, maxCd);
         }
